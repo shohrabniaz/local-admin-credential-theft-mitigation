@@ -5,3 +5,7 @@ Thumbs.db
 *.log
 .env
 *.tmp
+.batch_built
+Speaker_Only/
+.sixth/
+_tmp/
