@@ -1,0 +1,25 @@
+﻿{
+    "Organisation":  "Coastal Managed IT (fictional) — Windows endpoint privilege lab on host",
+    "Host":  "NIAZ",
+    "User":  "NIAZ\\User",
+    "CollectedUtc":  "2026-11-04T17:20:35.8602603Z",
+    "Mode":  "LiveDefensiveInventory",
+    "Ethics":  "Read-only local group enumeration. No credential access.",
+    "CurrentUserIsElevatedAdmin":  false,
+    "LocalAdministrators":  [
+                                {
+                                    "Name":  "NIAZ\\Administrator",
+                                    "ObjectClass":  "User",
+                                    "PrincipalSource":  "Local"
+                                },
+                                {
+                                    "Name":  "NIAZ\\User",
+                                    "ObjectClass":  "User",
+                                    "PrincipalSource":  "Local"
+                                }
+                            ],
+    "FindingHints":  [
+                         "Any interactive daily account in Administrators is standing local privilege.",
+                         "Shared or well-known local Administrator passwords enable lateral movement after one host is compromised."
+                     ]
+}

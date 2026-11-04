@@ -1,0 +1,32 @@
+﻿{
+    "Host":  "NIAZ",
+    "User":  "User",
+    "CollectedUtc":  "2026-11-04T17:18:53.3129054Z",
+    "Mode":  "LiveLabHost_DefensiveInventory",
+    "Ethics":  "Local read-only inventory. No credential dumping, no lateral movement tooling.",
+    "CurrentUserIsLocalAdmin":  false,
+    "LocalAdministrators":  [
+                                "NIAZ\\Administrator",
+                                "NIAZ\\User"
+                            ],
+    "LapsSignals":  {
+                        "WindowsLapsPolicy":  null,
+                        "AdmxHint":  "Check CSPs / GPO for Windows LAPS",
+                        "LegacyLapsReg":  null
+                    },
+    "CredentialGuard":  {
+                            "SecurityServicesConfigured":  [
+                                                               2
+                                                           ],
+                            "VirtualizationBasedSecurityStatus":  2,
+                            "SecurityServicesRunning":  [
+                                                            2
+                                                        ]
+                        },
+    "AsrNote":  "Attack surface reduction rules typically managed by Defender / Intune; not fully enumerated here",
+    "OS":  {
+               "Caption":  "Microsoft Windows 11 Pro",
+               "Version":  "10.0.26300",
+               "BuildNumber":  "26300"
+           }
+}

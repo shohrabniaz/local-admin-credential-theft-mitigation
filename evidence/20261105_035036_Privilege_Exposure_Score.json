@@ -1,0 +1,58 @@
+﻿{
+    "Organisation":  "Coastal Managed IT (fictional) — Windows endpoint privilege lab on host",
+    "Host":  "NIAZ",
+    "CollectedUtc":  "2026-11-04T17:20:36.1598138Z",
+    "Mode":  "LiveInventoryPlusDesignCoverage",
+    "LabSignals":  {
+                       "AdminMemberCount":  2,
+                       "DailyAdminLikely":  true,
+                       "LapsPolicyPresent":  false,
+                       "CredentialGuardRunning":  true
+                   },
+    "PreExposurePercent":  70,
+    "PostMitigationDesignPercent":  25,
+    "ReductionPoints":  45,
+    "Factors":  [
+                    {
+                        "Id":  "EXP-01",
+                        "Title":  "Standing local admin for daily users",
+                        "Pre":  90,
+                        "PostDesign":  15,
+                        "Max":  100,
+                        "Note":  "Remove interactive users from Administrators"
+                    },
+                    {
+                        "Id":  "EXP-02",
+                        "Title":  "Unmanaged / shared local admin password",
+                        "Pre":  85,
+                        "PostDesign":  20,
+                        "Max":  100,
+                        "Note":  "Windows LAPS unique rotating passwords"
+                    },
+                    {
+                        "Id":  "EXP-03",
+                        "Title":  "Credential theft from LSASS / memory",
+                        "Pre":  35,
+                        "PostDesign":  30,
+                        "Max":  100,
+                        "Note":  "Credential Guard + ASR + least privilege"
+                    },
+                    {
+                        "Id":  "EXP-04",
+                        "Title":  "Lateral movement via reused local admin",
+                        "Pre":  90,
+                        "PostDesign":  25,
+                        "Max":  100,
+                        "Note":  "LAPS + deny network logon for local admin where feasible"
+                    },
+                    {
+                        "Id":  "EXP-05",
+                        "Title":  "IT support friction / shadow elevation",
+                        "Pre":  50,
+                        "PostDesign":  35,
+                        "Max":  100,
+                        "Note":  "JIT elevation helpdesk process; measure ticket volume"
+                    }
+                ],
+    "ValidationNote":  "Lab validation = configuration inventory + Essential Eight–aligned mitigation coverage. No simulated attack tooling."
+}
