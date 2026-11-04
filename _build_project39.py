@@ -235,33 +235,44 @@ def build_report(score, inv, laps):
             "3. Exposure findings",
             f"On host {(inv or {}).get('Host', 'lab')}, the current interactive session was "
             f"not elevated, yet the Administrators group still included a daily-style "
-            f"account pattern (member count {sig.get('AdminMemberCount')}). LAPS policy "
-            f"was not detected, leaving local Administrator password uniqueness unproven. "
-            f"Credential Guard appeared running on this hardware, which lowers memory-"
-            "scraping residual relative to an unprotected host but does not excuse standing "
-            "local admin or shared passwords.",
+            f"account pattern (member count {sig.get('AdminMemberCount')}). That split is "
+            "typical in SMEs: the logged-on user may feel 'standard', while another local "
+            "profile retains standing admin. LAPS policy was not detected, so uniqueness "
+            "and rotation of the built-in Administrator password are unproven — a classic "
+            "lateral-movement enabler if the same secret exists on many PCs. Credential "
+            "Guard appeared running on this hardware, which lowers memory-scraping residual "
+            "relative to an unprotected host but does not excuse standing local admin or "
+            "shared passwords. Essential Eight still wants administrative privileges "
+            "restricted first.",
         ),
         (
             "4. Mitigation design",
-            "Remove interactive users from Administrators; deploy Windows LAPS; provide "
-            "JIT elevation for IT; keep Credential Guard on supported devices; pilot "
-            "Defender ASR; consider denying network logon for local accounts. Package "
-            "software so users do not need admin to work. Expect a short helpdesk spike, "
-            "then lower risk if packaging and elevation SLAs are clear.",
+            "Remove interactive users from Administrators; deploy Windows LAPS to Entra-"
+            "joined or Active Directory–joined devices; provide just-in-time elevation for "
+            "IT; keep Credential Guard on supported hardware; pilot Microsoft Defender "
+            "attack surface reduction rules from audit to enforce; and consider denying "
+            "network logon for local accounts where operations allow. Package common "
+            "software (winget, Intune, or MSP tooling) so staff do not need admin rights "
+            "to work. Expect a short helpdesk spike for install requests, then a decline "
+            "if packaging and elevation SLAs are published and kept.",
         ),
         (
             "5. Validation and limits",
-            f"Coverage scoring moves exposure from {pre}% to {post}%. This validates that "
-            "the control set addresses the measured gaps on one host; it does not prove "
-            "fleet-wide Essential Eight maturity or withstand a live adversary simulation. "
-            "One PC is not an estate attestation.",
+            f"Coverage scoring moves exposure from {pre}% to {post}% (about {red} points). "
+            "That shows the designed control set addresses the gaps measured on this host. "
+            "It does not prove fleet-wide Essential Eight maturity, and it is not a live "
+            "adversary simulation. One PC is a laboratory signal, not an estate attestation. "
+            "The SME hardening guide therefore starts with a 5–10 PC pilot and a 30-day "
+            "re-score before broad rollout.",
         ),
         (
             "6. Conclusion",
             "SMEs should treat local admin as an exception with an expiry, not a default. "
-            "LAPS plus least privilege cuts the lateral-movement value of a single "
-            "compromised PC. Credential Guard helps where available, but identity hygiene "
-            "on the endpoint remains the first win.",
+            "Windows LAPS plus least privilege cuts the lateral-movement value of a single "
+            "compromised PC by making each local admin password unique and removing standing "
+            "rights from daily accounts. Credential Guard helps where hardware allows, but "
+            "endpoint identity hygiene — who is in Administrators, and whether LAPS is on — "
+            "remains the first, cheapest win for an MSP-supported fleet.",
         ),
         (
             "References",
